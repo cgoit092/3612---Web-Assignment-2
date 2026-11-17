@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>COMP3612 Shop | Assignment 2</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/main.js" type="module"></script>
+    </head>
+    <body>
+        <!-- SITE HEADER -->
+         <header class="site-header">
+            <div class="continer header-inner">
+                <a href="#" class="logo" data-view="home"><span>//</span> COMP3612 Shop</a>
+                <nav aria-label="Main">
+                    <ul>
+                        <li><a href="#" data-view="home">Home</a></li>
+                        <li><a href="#" data-view="browse">Browse</a></li>
+                        <li><a href="#" data-view="category">Category</a></li>
+                        <li><a href="#" data-action="about">About</a></li>
+                        <li class="cart-item">
+                            <a href="#" data-view="cart">Cart <span id="cartCount" class="card-count">0</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+         </header>
+
+         <main>
+            <p id="loading" class="status-message">Loading products&hellip;</p>
+
+            <!-- HOME VIEW -->
+             <article id="home">
+                <section clas="hero">
+                    <div class="container hero-inner">
+                        <div class="hero-content">
+                            <p class="eyebrow" id="heroStats"></p>
+                            <h1>Everything on your list, in one cart.</h1>
+                            <p>From groceries to laptops to a watch you probably should not buy. Browse the whole catalogue, filter it your way, and check out in seconds.</p>
+                            <div class="hero-buttons">
+                                <a href="#" class="btn btn-gold" data-view="browse">Shop all products</a>
+                                <a href="#" class="btn btn-ghost" data-view="category">Shop by category</a>
+                            </div>
+                        </div>
+                        <figure class="hero-image">
+                            <img src="https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp"
+                                 alt="Annibale Colombo sofa">
+                        </figure>
+                    </div>
+                </section>
+
+                <section class="band">
+                    <div class="container">
+                        <div class="section-heading">
+                            <h2>Featured products</h2>
+                            <a href="#" data-view="browse">View all products</a>
+                        </div>
+                        <div id="featuredGrid" class="product-grid featured-grid"></div>
+                    </div>
+                </section>
+
+                <section class="perks">
+                    <div class="container perk-grid">
+                        <div class="perk">
+                            <span class="perk-icon">$</span>
+                            <h3>Free shipping over $500</h3>
+                            <p>Standard, express or priority. Once your merchandise passes $500, shipping is on us.</p>
+                        </div>
+                        <div class="perk">
+                            <span class="perk-icon">@</span>
+                            <h3>Ships worldwide</h3>
+                            <p>Canada, the United States and international destination, priced up front in your cart.</p>
+                        </div>
+                        <div class="perk">
+                            <span class="perk-icon">{}</span>
+                            <h3>Your cart remembers</h3>
+                            <p>Close the tab and come back later. Everything you added will still be waiting.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="band band-light">
+                    <div class="container">
+                        <div class="section-heading">
+                            <h2>Top rated by customers</h2>
+                            <a href="#" data-view="category">Browse categories</a>
+                        </div>
+                        <div id="topRatedGrid" class="product-grid"></div>
+                    </div>
+                </section>
+             </article>
+
+             <!-- CATEGORY VIEW -->
+              <article id="category">
+                <section class="hero hero-small">
+                    <div class="container">
+                        <h1>Shop by category</h1>
+                        <p>Pick a department to see everything in it.</p>
+                    </div>
+                </section>
+                <section class="band band-light">
+                    <div class="container">
+                        <div id="categoryGrid" class="category-grid"></div>
+                    </div>
+                </section>
+              </article>
+
+              <!-- BROWSE VIEW -->
+         </main>
+    </body>
+</html>

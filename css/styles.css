@@ -1,0 +1,236 @@
+/* Design tokens */
+:root {
+    --navy-900: #171b26;  /* header / footer */
+   --navy-800: #272d3f;  /* hero background */
+   --slate: #34495e;     /* active nav link */
+   --gold: #d6a419;      /* accent, primary buttons */
+   --gold-light: #e8b82a;
+   --teal: #2f6f63;      /* product card top border, "in stock" */
+   --red: #b3402f;       /* low stock, remove buttons */
+   --gray-50: #f3f4f7;   /* light section background */
+   --gray-200: #e3e6ec;  /* borders */
+   --gray-400: #8b93a7;  /* muted text */
+   --gray-600: #4b5261;  /* body text */
+   --ink: #1a1d29;       /* headings */
+
+   --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+   --font-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   min-height: 100vh;
+   display: flex;            /* keeps the footer at the bottom on short views */
+   flex-direction: column;
+   font-family: var(--font-sans);
+   font-size: 15px;
+   line-height: 1.5;
+   color: var(--gray-600);
+   background-color: #ffffff;
+}
+
+main {
+   flex: 1;
+}
+
+h1, h2, h3 {
+   font-family: var(--font-serif);
+   font-weight: 600;
+   color: var(--ink);
+   margin: 0;
+}
+
+img {
+   max-width: 100%;
+   display: block;
+}
+
+figure {
+   margin: 0;
+}
+
+button, input, select {
+   font-family: inherit;
+   font-size: inherit;
+}
+
+button {
+   cursor: pointer;
+}
+
+button:disabled,
+select:disabled {
+   cursor: not-allowed;
+   opacity: 0.5;
+}
+
+/* The views: only the one with class "active" is displayed (set by js/router.js) */
+main > article {
+   display: none;
+}
+
+main > article.active {
+   display: block;
+}
+
+/* Shared Pieces */
+.container {
+   max-width: 1140px;
+   margin: 0 auto;
+   padding: 0 1.8rem;
+}
+
+.hidden {
+   display: none !important;
+}
+
+/* Hidden on screen but still read out by screen readers */
+.visually-hidden {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   overflow: hidden;
+   clip-path: inset(50%);
+}
+
+.btn {
+   display: inline-block;
+   font-size: 14px;
+   font-weight: 600;
+   text-decoration: none;
+   text-align: center;
+   padding: 0.75em 1.6em;
+   border-radius: 2px;
+   border: 1px solid transparent;
+   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-gold {
+   background-color: var(--gold);
+   border-color: var(--gold);
+   color: var(--ink);
+}
+
+.btn-gold:hover:not(:disabled) {
+   background-color: var(--gold-light);
+}
+
+.btn-outline {
+   background-color: #ffffff;
+   border-color: var(--ink);
+   color: var(--ink);
+}
+
+.btn-outline:hover {
+   background-color: var(--ink);
+   color: #ffffff;
+}
+
+.btn-ghost {
+   border-color: #5b6379;
+   color: #ffffff;
+}
+
+.btn-ghost:hover {
+   border-color: var(--gold);
+   color: var(--gold);
+}
+
+.btn-block {
+   display: block;
+   width: 100%;
+}
+
+.eyebrow {
+   font-family: var(--font-mono);
+   font-size: 12px;
+   letter-spacing: 0.04em;
+   color: var(--gold);
+   margin: 0 0 14px;
+}
+
+.stars {
+   color: var(--gold);
+   letter-spacing: 1px;
+   margin: 0;
+}
+
+.status-message,
+.empty-message {
+   text-align: center;
+   padding: 48px 1.8rem;
+   margin: 0;
+}
+
+.status-message.error {
+   color: var(--red);
+}
+
+.empty-message {
+   background-color: var(--gray-50);
+   border: 1px dashed #c9cedb;
+   border-radius: 3px;
+}
+
+.empty-message a {
+   color: var(--ink);
+   font-weight: 600;
+}
+
+.band {
+   padding: 50px 0;
+}
+
+.band-light {
+   background-color: var(--gray-50);
+   border-top: 1px solid var(--gray-200);
+}
+
+.section-heading {
+   display: flex;
+   justify-content: space-between;
+   align-items: baseline;
+   margin-bottom: 28px;
+}
+
+.section-heading h2 {
+   font-size: 26px;
+}
+
+.section-heading a {
+   font-size: 13px;
+   font-weight: 600;
+   color: var(--ink);
+}
+
+.section-heading a:hover {
+   color: var(--teal);
+}
+
+/* Pills: product tags and the technology list in the About dialog */
+.tags {
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 6px;
+   margin: 0;
+   padding: 0;
+}
+
+.tags li {
+   font-family: var(--font-mono);
+   font-size: 11.5px;
+   color: var(--ink);
+   background-color: #ffffff;
+   border: 1px solid #c9cedb;
+   border-radius: 999px;
+   padding: 3px 11px;
+}
