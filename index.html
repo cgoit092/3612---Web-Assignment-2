@@ -109,6 +109,300 @@
               </article>
 
               <!-- BROWSE VIEW -->
+              <article id="browse">
+                <div class="container browse-layout">
+
+                    <section id="filter" aria-label="Filters">
+                        <h2>Departments</h2>
+
+                        <div class="accordion open">
+                            <button type="button" class="accordion-toggle" data-action="toggle-accordion" aria-expanded="true">Name</button>
+                            <div class="accordion-panel">
+                                <label for="filterName" class="visually-hidden">Product name contains</label>
+                                <input type="search" id="filterName" placeholder="Search product names">
+                            </div>
+                        </div>
+
+                        <div class="accordion open">
+                            <button type="button" class="accordion-toggle" data-action="toggle-accordion" aria-expanded="true">Category</button>
+                            <div class="accordion-panel" id="ratingOptions"></div>
+                        </div>
+
+                        <div class="accordion open">
+                            <button type="button" class="accordion-toggle" data-action="toggle-accordion" aria-expanded="true">Rating</button>
+                            <div class="accordion-panel" id="ratingOptions"></div>
+                        </div>
+
+                        <div class="accordion open">
+                            <button type="button" class="accordion-toggle" data-action="toggle-accordion" aria-expanded="true">Price</button>
+                            <div class="accordion-panel price-fields">
+                                <label for="filterOver">Over $</label>
+                                <input type="number" id="filterOver" min="0" step="1" placeholder="min">
+                                <label for="filterUnder">Under $</label>
+                                <input type="number" id="filterUnder" min="0" step="1" placeholder="max">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline btn-block" data-action="clear-filters">Clear all filters</button>
+                    </section>
+
+                    <section id="results">
+                        <div class="results-header">
+                            <div>
+                                <h1>Browse</h1>
+                                <p id="resultCount" class="result-count"></p>
+                            </div>
+                            <div class="sort-field">
+                                <label for="sortSelect">Sort by</label>
+                                <select id="sortSelect">
+                                    <option value="name">Product name (A-Z)</option>
+                                    <option value="priceLow">Price (low to high)</option>
+                                    <option value="priceHigh">Price (high to low)</option>
+                                    <option value="category">Category</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="activeFilters" class="chips"></div>
+                    </section>
+
+                </div>
+              </article>
+
+              <!-- Single Product View -->
+              <article id="product">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol class="container">
+                        <li><a href="#" data-view="home">Home</a></li>
+                        <li><a href="#" id="crumbCategory" data-view="browse"></a></li>
+                        <li id="crumbTitle" aria-current="page"></li>
+                    </ol>
+                </nav>
+
+                <div class="container product-page">
+                    <div class="product-top">
+
+                        <div class="gallery">
+                            <button type="button" class="main-image" data-action="zoom-image" title="Click to see the full-size image">
+                                <img id="productImage" src="" alt="">
+                            </button>
+                            <div id="productThumbs" class="thumbnails"></div>
+                        </div>
+
+                        <div class="product-summary">
+                            <h1 id="productTitle"></h1>
+                            <p id="productPrice" class="product-price"></p>
+                            <p class="product-meta">
+                                <span id="productSku" class="sku"></span>
+                                <span id="productStars" class="stars"></span>
+                                <span id="productRating" class="rating-value"></span>
+                            </p>
+                            <ul id="productTags" class="tags"></ul>
+                            <p id="productStock" class="stock"></p>
+                            <p id="productDescription" class="description"></p>
+
+                            <form id="addToCartForm" class="add-form">
+                                <label for="productQuantity">Quantity</label>
+                                <input type="number" id="productQuantity" value="1" min="1" step="1" required>
+                                <button type="submit" id="addButton" class="btn btn-gold">+ Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <section class="product-details">
+                        <div class="tabs">
+                            <button type="button" class="tab active" data-action="show-tab" data-tab="specsPanel">Specifications</button>
+                            <button type="button" class="tab" data-action="show-tab" data-tab="reviewsPanel" id="reviewsTab">Reviews</button>
+                        </div>
+                        <div id="specsPanel" class="tab-panel active">
+                            <table class="specs"><tbody id="specRow"></tbody></table>
+                        </div>
+                        <div id="reviewsPanel" class="tab-panel">
+                            <div id="reviewList" class="review-list"></div>
+                        </div>
+                    </section>
+
+                    <section id="relatedSection" class="related">
+                        <h2>More in this category</h2>
+                        <div id="relatedGrid" class="product-grid"></div>
+                    </section>
+                </div>
+              </article>
+
+              <!-- Cart View -->
+              <article id="cart">
+                <div class="container cart-page">
+                    <h1>Shopping Cart</h1>
+
+                    <p id="cartEmpty" class="empty-message hidden">
+                        Your cart is empty. <a href="#" data-view="browse">Browse the products</a> to add something.
+                    </p>
+
+                    <table id="cartTable" class="cart-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Item</th>
+                                <th class="number">Price</th>
+                                <th class="number">Quantity</th>
+                                <th class="number">Subtotal</th>
+                                <th><span class="visually-hidden">Remove</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems"></tbody>
+                    </table>
+
+                    <div class="cart-bottom">
+                        <section class="panel">
+                            <h2>Shipping</h2>
+                            <label for="shippingMethod">Method</label>
+                            <select id="shippingMethod">
+                                <option value="standard">Standard</option>
+                                <option value="express">Express</option>
+                                <option value="priority">Priority</option>
+                            </select>
+                            <label for="shippingDestination">Destination</label>
+                            <select id="shippingDestination">
+                                <option value="canada">Canada</option>
+                                <option value="usa">United States</option>
+                                <option value="international">International</option>
+                            </select>
+                            <p class="fine-print">Free shipping when merchandise is over $500. 5% tax applies to Canadian orders only.</p>
+                        </section>
+
+                        <section class="panel">
+                            <h2>Summary</h2>
+                            <dl class="summary">
+                                <dt>Merchandise</dt> <dd id="summaryMerchandise"></dd>
+                                <dt>Shipping</dt>    <dd id="summaryShipping"></dd>
+                                <dt>Tax</dt>         <dd id="summaryTax"></dd>
+                                <dt class="total">Total</dt> <dd id="summaryTotal" class="total"></dd>
+                            </dl>
+                            <button type="button" id="checkoutButton" class="btn btn-gold btn-block" data-action="checkout">Checkout</button>
+                        </section>
+                    </div>
+                </div>
+              </article>
          </main>
+
+         <!-- Footer -->
+         <footer class="site-footer">
+            <div class="container">
+                <div class="footer-columns">
+                    <nav aria-label="Shop">
+                        <h3>Shop</h3>
+                        <ul>
+                            <li><a href="#" data-view="home">Home</a></li>
+                            <li><a href="#" data-view="browse">Browse all products</a></li>
+                            <li><a href="#" data-view="category">Categories</a></li>
+                            <li><a href="#" data-view="cart">Shopping cart</a></li>
+                        </ul>
+                    </nav>
+                    <nav aria-label="About">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#" data-action="about">About this site</a></li>
+                            <li><a href="https://github.com/cgoit092/3612---Web-Assignment-2.git">Source code on GitHub</a></li>
+                            <li><a href="https://dummyjson.com/docs/products">Product data: DummyJSON</a></li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <h3>COMP 3612</h3>
+                        <p>Assignment 2: a single-page applicaiton written in plain JavaScript.</p>
+                        <p>Mount Royal University, Fall 2026</p>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2026 Cameron Goit. Built for COMP 3612. Not a real store.</p>
+            </div>
+         </footer>
+
+         <!-- About Us -->
+         <dialog id="about" aria-labelledby="aboutTitle">
+            <div class="dialog-body">
+                <button type="button" class="dialog-close" data-action="close-dialog" aria-label="Close">&times;</button>
+                <p class="eyebrow">COMP 3612 &middot; Assignment 2</p>
+                <h2 id="aboutTitle">About this site</h2>
+                <p>COMP3612 Shop is a single-page application for browsing a catalogue of 100 products. You can filter and sort the catalogue, look at one product in detail, and manage a shopping cart that is still there the next time you visit. Every view lives in one HTML page; JavaScript shows and hides them.</p>
+
+                <h3>Technologies</h3>
+                <ul class="tags">
+                    <li>HTML5</li>
+                    <li>CSS3 (no framework)</li>
+                    <li>JavaScript modules</li>
+                    <li>fetch API</li>
+                    <li>localStorage</li>
+                    <li>GitHub Pages</li>
+                </ul>
+
+                <dl class="about-facts">
+                    <dt>Made by</dt> <dd>Cameron Goit</dd>
+                    <dt>Course</dt>  <dd>COMP 3612 Web Development, Mount Royal University</dd>
+                    <dt>Credits</dt> <dd>Product data and images from the <a href="https://dummyjson.com">DummyJSON</a> API. Fonts from Google Fonts.</dd>
+                    <dt>Source</dt>  <dd><a href="https://github.com/cgoit092/3612---Web-Assignment-2.git">github.com/cgoit092/3612---Web-Assignment-2</a></dd>
+                </dl>
+
+                <div class="dialog-buttons">
+                    <button type="button" class="btn btn-gold" data-actions="close-dialog">Close</button>
+                </div>
+            </div>
+         </dialog>
+
+         <!-- Single Product View Image-->
+         <dialog id="imageDialog" class="image-dialog" aria-label="Full-size product image">
+            <div class="dialog-body">
+                <button type="button" class="dialog-close" data-action="close-dialog" aria-label="Close">&times;</button>
+                <img id="fullImage" src="" alt="">
+            </div>
+         </dialog>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+        <!-- Templates -->
+        <template id="productCardTemplate">
+            <article class="product-card">
+                <a href="#" class="card-image" data-view="product">
+                    <img src="" alt="" loading="lazy">
+                </a>
+                <div class="product-info">
+                    <p class="card-category"></p>
+                    <h3><a href="#" data-view="product"></a></h3>
+                    <p class="stars"></p>
+                    <div class="card-bottom">
+                        <p class="price"></p>
+                        <button type="button" class="btn-add" data-action="add-to-cart" title="Add to cart">+</button>
+                    </div>
+                </div>
+            </article>
+        </template>
+
+        <template id="categoryTileTemplate">
+            <a href="#" class="category-tile" data-view="browse">
+                <figure><img src="" alt="" loading="lazy"></figure>
+                <h3></h3>
+                <p></p>
+            </a>
+        </template>
+
+        <template id="reviewTemplate">
+            <article class="review">
+                <header>
+                    <h3></h3>
+                    <span class="stars"></span>
+                    <time></time>
+                </header>
+                <p></p>
+            </article>
+        </template>
+
+        <template id="cartRowTemplate">
+            <tr>
+                <td class="cart-thumb"><a href="#" data-view="product"><img src="" alt=""></a></td>
+                <td class="cart-title"><a href="#" data-view="product"></a></td>
+                <td class="number item-price"></td>
+                <td class="number"><input type="number" class="quantity-input" min="1" step="1" aria-label="Quantity"></td>
+                <td class="number item-subtotal"></td>
+                <td class="number"><button type="button" class="btn-remove" data-action="remove-item" title="Remove from cart">&minus;</button></td>
+            </tr>
+        </template>
+
     </body>
 </html>
