@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
     <body>
         <!-- SITE HEADER -->
          <header class="site-header">
-            <div class="continer header-inner">
+            <div class="container header-inner">
                 <a href="#" class="logo" data-view="home"><span>//</span> COMP3612 Shop</a>
                 <nav aria-label="Main">
                     <ul>
@@ -22,7 +22,7 @@
                         <li><a href="#" data-view="category">Category</a></li>
                         <li><a href="#" data-action="about">About</a></li>
                         <li class="cart-item">
-                            <a href="#" data-view="cart">Cart <span id="cartCount" class="card-count">0</span></a>
+                            <a href="#" data-view="cart">Cart <span id="cartCount" class="cart-count">0</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -34,7 +34,7 @@
 
             <!-- HOME VIEW -->
              <article id="home">
-                <section clas="hero">
+                <section class="hero">
                     <div class="container hero-inner">
                         <div class="hero-content">
                             <p class="eyebrow" id="heroStats"></p>
@@ -72,7 +72,7 @@
                         <div class="perk">
                             <span class="perk-icon">@</span>
                             <h3>Ships worldwide</h3>
-                            <p>Canada, the United States and international destination, priced up front in your cart.</p>
+                            <p>Canada, the United States and international destinations, priced up front in your cart.</p>
                         </div>
                         <div class="perk">
                             <span class="perk-icon">{}</span>
@@ -125,7 +125,7 @@
 
                         <div class="accordion open">
                             <button type="button" class="accordion-toggle" data-action="toggle-accordion" aria-expanded="true">Category</button>
-                            <div class="accordion-panel" id="ratingOptions"></div>
+                            <div class="accordion-panel" id="categoryOptions"></div>
                         </div>
 
                         <div class="accordion open">
@@ -164,6 +164,8 @@
                         </div>
 
                         <div id="activeFilters" class="chips"></div>
+                        <p id="noMatches" class="empty-message hidden">No products match these filters. Try removing one, or clear them all.</p>
+                        <div id="resultsGrid" class="product-grid"></div>
                     </section>
 
                 </div>
@@ -307,7 +309,7 @@
                     </nav>
                     <div>
                         <h3>COMP 3612</h3>
-                        <p>Assignment 2: a single-page applicaiton written in plain JavaScript.</p>
+                        <p>Assignment 2: a single-page application written in plain JavaScript.</p>
                         <p>Mount Royal University, Fall 2026</p>
                     </div>
                 </div>
@@ -341,7 +343,7 @@
                 </dl>
 
                 <div class="dialog-buttons">
-                    <button type="button" class="btn btn-gold" data-actions="close-dialog">Close</button>
+                    <button type="button" class="btn btn-gold" data-action="close-dialog">Close</button>
                 </div>
             </div>
          </dialog>
